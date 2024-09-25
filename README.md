@@ -3,39 +3,47 @@ Minimal configuration to get Vikunja up and running quickly. To make Vikunja ava
 
 https://vikunja.io/docs/full-docker-example
 
-## Setup
+## Getting Started
 
-Fire up a shell at project root directory. Make directories for mapping volumes to host directories to persist state across restarts, upgrades, etc.Then change ownership to allow process in container to read/write directories/files on host.
+Fire up a shell at project root directory and execute the following commands:
 
 ```sh
 mkdir $PWD/files $PWD/db
 chown 1000 $PWD/files $PWD/db
 ```
 
-Finally replace placeholder text in:
-  
-`package.json`:
+The first command makes directories for mapping volumes to host directories in order to persist state (db data, files) across restarts, upgrades, etc. The second command changes ownership to allow process in container to read/write directories/files on host.
 
-```
-  {
-    "seed": "make user email=YOUR_EMAIL_HERE password=YOUR_PASSWORD_HERE username=YOUR_USERNAME_HERE"
-  }
-```
-
-and anywhere in the `Makefile` where you see:
-
-```
-  email=YOUR_EMAIL_HERE password=YOUR_PASSWORD_HERE username=YOUR_USERNAME_HERE"
-
-```
-
-## Usage
-
-_Build_
+Copy the env example to your own custom `.env` file:
 
 ```sh
-npm run build
+cp .env.example .env
 ```
+
+Copy the env overrides file to your own custom `.env.override`. This file can be empty but it must exist. 
+
+Customize variables to suit your use case.
+
+Run the start script:
+
+```sh
+npm run start
+```
+
+Once the container is running, seed the database with its first user:
+
+```sh
+npm run seed --email=YOUR_EMAIL_HERE --password=YOUR_PASSWORD_HERE --username=YOUR_USERNAME_HERE
+```
+
+Finally, navigate to the login page. By default that is at:
+
+```sh
+http://localhost:3456
+```
+
+
+## Usage
 
 _Install Tools_
 
@@ -106,7 +114,7 @@ _Create (register) a user_
 
 
 ```sh
-make user email=vik25@example.com password=vikunja25 username=vik25
+make user email=YOUR_EMAIL_HERE password=YOUR_PASSWORD_HERE username=YOUR_USERNAME_HERE
 
 ```
 
@@ -120,7 +128,7 @@ make list_users
 _Reset password_
 
 ```sh
-make reset_password userid=1 password=52ajnukiv
+make reset_password userid=1 password=YOUR_PASSWORD_HERE
 ```
 
 _Run all migrations_
@@ -176,7 +184,7 @@ docker exec vikunja25 /app/vikunja/vikunja help
 _Create User_
 
 ```
-docker exec vikunja25 /app/vikunja/vikunja user create --email=vik@vikunja25.io --password=pa8sw0rd --username=vik
+docker exec vikunja25 /app/vikunja/vikunja user create --email=YOUR_EMAIL_HERE--password=YOUR_PASSWORD_HERE --username=YOUR_USERNAME_HERE
 ```
 
 For more information see the reference to the official docs below:
