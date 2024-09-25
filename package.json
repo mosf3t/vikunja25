@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install:tools": "make install_tools",
-    "build": "make build",
     "start": "make start",
-    "seed": "make user email=YOUR_EMAIL_HERE password=YOUR_PASSWORD_HERE username=YOUR_USERNAME_HERE",
+    "seed": "make user ",
     "list:migrations": "make list_migrations",
     "migrate:all": "make migrate_all",
     "rollback:until": "make rollback_until",
