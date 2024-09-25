@@ -1,0 +1,6 @@
+.env
+.env.override
+
+db
+files
+node_modules
