@@ -10,7 +10,7 @@ VIKUNJA_CLI=/app/vikunja/vikunja
 VIKUNJA_CONTAINER_NAME=vikunja25
 
 .PHONY: all
-all: install_tools build start
+all: install_tools start
 
 # Install tools
 # Example: make install_tools
@@ -19,15 +19,6 @@ install_tools: $(SOME_TOOL)
 	npm install
 	@echo "---"
 	@echo "Tools installed"
-	@echo "---"
-
-# Build service
-# Example: make build
-.PHONY: build
-build:
-	$(DOCKER_COMPOSE_CMD) build
-	@echo "---"
-	@echo "Build completed"
 	@echo "---"
 
 # Start service
