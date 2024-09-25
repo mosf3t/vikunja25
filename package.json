@@ -1,0 +1,21 @@
+{
+  "name": "vikunja25",
+  "version": "0.0.1",
+  "description": "Trialling Vikunja for personal task management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install:tools": "make install_tools",
+    "build": "make build",
+    "start": "make start",
+    "seed": "make user email=vik@example.com password=vikunja25 username=vik",
+    "list:migrations": "make list_migrations",
+    "migrate:all": "make migrate_all",
+    "rollback:until": "make rollback_until",
+    "stop": "make stop",
+    "restart": "make restart=vikunja",
+    "redeploy": "make redeploy=vikunja"
+  },
+  "author": "mosf3t",
+  "license": "ISC"
+}
