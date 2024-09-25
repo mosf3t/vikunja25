@@ -98,7 +98,7 @@ ifdef service
 endif
 
 # Create user
-# Example: make user email=vik25@example.com password=vikunja25 username=vik25
+# Example: make user email=YOUR_EMAIL_HERE password=YOUR_PASSWORD_HERE username=YOUR_USERNAME_HERE
 .PHONY: user
 user:
 	$(DOCKER) exec $(VIKUNJA_CONTAINER_NAME) $(VIKUNJA_CLI) user create --email=$(email) --password=$(password) --username=$(username)
@@ -108,7 +108,7 @@ user:
 	@echo "---"
 
 # Reset password
-# Example: make reset_password userid=1 password=vikunja26
+# Example: make reset_password userid=YOUR_USER_ID_HERE password=YOUR_PASSWORD_HERE
 .PHONY: reset_password
 reset_password:
 	$(DOCKER) exec $(VIKUNJA_CONTAINER_NAME) $(VIKUNJA_CLI) user reset-password $(userid) --direct --password=$(password)
