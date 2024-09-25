@@ -11,14 +11,13 @@ services:
       VIKUNJA_SERVICE_JWTSECRET: "${VIKUNJA_SERVICE_JWTSECRET:-vikunja25}"
       VIKUNJA_SERVICE_PUBLICURL: "${VIKUNJA_SERVICE_PUBLICURL:-http://localhost}"
       # Out-of-the-box the default path is /app/vikunja/vikunja.db
-      # Below this is defined explicitly as a default; it is expected
-      # that the corresponding env var will define an alternate path
+      # Below this is defined explicitly to define an alternate path
       # outside the container to persist states across container restarts.
-      VIKUNJA_DATABASE_PATH: "${VIKUNJA_DATABASE_PATH:-/app/vikunja/vikunja.db}"
+      VIKUNJA_DATABASE_PATH: /db/vikunja.db
       VIKUNJA_DATABASE_TYPE: "${VIKUNJA_DATABASE_TYPE:-sqlite}"
     ports:
       - "${VIKUNJA_PORT:-3456}:3456"
     volumes:
-      - "${VIKUNJA_DATABASE_VOLUME:-./db:/db}"
-      - "${VIKUNJA_FILE_VOLUME:-./files:/app/vikunja/files}"
+      - ./files:/app/vikunja/files
+      - ./db:/db
     restart: "${VIKUNJA_RESTART:-unless-stopped}"
