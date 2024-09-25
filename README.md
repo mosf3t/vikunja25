@@ -5,19 +5,28 @@ https://vikunja.io/docs/full-docker-example
 
 ## Setup
 
-* Fire up a shell at project root directory
-  
-* Make directories for mapping volumes to host directories
-  
-  * to persist state across restarts, upgrades, etc
-  
-* Change ownership to allow process in container 
-  
-  * to read/write directories/files on host
+Fire up a shell at project root directory. Make directories for mapping volumes to host directories to persist state across restarts, upgrades, etc.Then change ownership to allow process in container to read/write directories/files on host.
 
 ```sh
 mkdir $PWD/files $PWD/db
 chown 1000 $PWD/files $PWD/db
+```
+
+Finally replace placeholder text in:
+  
+`package.json`:
+
+```
+  {
+    "seed": "make user email=YOUR_EMAIL_HERE password=YOUR_PASSWORD_HERE username=YOUR_USERNAME_HERE"
+  }
+```
+
+and anywhere in the `Makefile` where you see:
+
+```
+  email=YOUR_EMAIL_HERE password=YOUR_PASSWORD_HERE username=YOUR_USERNAME_HERE"
+
 ```
 
 ## Usage
